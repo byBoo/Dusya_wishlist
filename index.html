@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новогодний Вишлист Дусички 🎄</title>
+    <title>Новогодний Вишлист Дусички 🎄💖</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #090d16; }
+        body { font-family: 'Inter', sans-serif; background-color: #0d0914; }
         .serif-title { font-family: 'Playfair Display', serif; }
         @keyframes snowfall {
             0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0.9; }
             50% { transform: translateY(50vh) translateX(25px) rotate(180deg); }
             100% { transform: translateY(105vh) translateX(-15px) rotate(360deg); opacity: 0.2; }
         }
-        .snowflake { position: fixed; top: -10vh; color: rgba(255, 255, 255, 0.7); user-select: none; pointer-events: none; z-index: 1; animation: snowfall linear infinite; }
-        .card-glass { background: rgba(17, 24, 39, 0.78); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
-        .garland-glow { background: radial-gradient(circle at 50% 0%, rgba(239, 68, 68, 0.18), rgba(245, 158, 11, 0.12), transparent 70%); }
+        .snowflake { position: fixed; top: -10vh; color: rgba(251, 207, 232, 0.75); user-select: none; pointer-events: none; z-index: 1; animation: snowfall linear infinite; }
+        .card-glass { background: rgba(24, 17, 36, 0.78); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+        .garland-glow { background: radial-gradient(circle at 50% 0%, rgba(236, 72, 153, 0.22), rgba(244, 63, 94, 0.12), transparent 72%); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-gradient-to-b from-slate-950 via-[#0f172a] to-[#131129] min-h-screen text-slate-100 relative overflow-x-hidden pb-24">
+<body class="bg-gradient-to-b from-[#0d0814] via-[#150d24] to-[#1a0f2e] min-h-screen text-slate-100 relative overflow-x-hidden pb-24">
     <div class="fixed inset-0 garland-glow pointer-events-none z-0"></div>
     <div id="snow-container" aria-hidden="true"></div>
 
-    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-slate-800/95 border border-emerald-500/50 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 backdrop-blur-md">
-        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-slate-900/95 border border-pink-500/50 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 backdrop-blur-md">
+        <div class="w-8 h-8 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center shrink-0">
             <i id="toast-icon" class="fa-solid fa-check"></i>
         </div>
         <span id="toast-message" class="text-sm font-medium">Артикул скопирован!</span>
@@ -35,30 +35,30 @@
 
     <!-- Модальное окно редактирования -->
     <div id="edit-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
-        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
+        <div class="bg-[#161024] border border-pink-500/30 rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
             <button onclick="closeEditModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <h3 class="text-xl font-bold text-white mb-1 flex items-center gap-2">
-                <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+                <i class="fa-solid fa-wand-magic-sparkles text-pink-400"></i>
                 Настроить карточку
             </h3>
             <p class="text-xs text-slate-400 mb-5">Можно обновить фото, цену или описание.</p>
             <input type="hidden" id="edit-item-id">
             <div class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Название подарка</label>
-                    <input type="text" id="edit-title-input" class="w-full bg-slate-800/90 border border-slate-700 focus:border-amber-400 rounded-xl px-3.5 py-2.5 text-sm text-white outline-none">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-pink-300/80 mb-1.5">Название подарка</label>
+                    <input type="text" id="edit-title-input" class="w-full bg-slate-800/90 border border-slate-700 focus:border-pink-400 rounded-xl px-3.5 py-2.5 text-sm text-white outline-none">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Цена</label>
-                    <input type="text" id="edit-price-input" class="w-full bg-slate-800/90 border border-slate-700 focus:border-amber-400 rounded-xl px-3.5 py-2.5 text-sm text-white outline-none">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-pink-300/80 mb-1.5">Цена</label>
+                    <input type="text" id="edit-price-input" class="w-full bg-slate-800/90 border border-slate-700 focus:border-pink-400 rounded-xl px-3.5 py-2.5 text-sm text-white outline-none">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Картинка (ссылка или файл/скриншот с устройства)</label>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-pink-300/80 mb-1.5">Картинка (ссылка или файл/скриншот с устройства)</label>
                     <div class="flex gap-2">
-                        <input type="text" id="edit-image-input" placeholder="https://... или загрузите фото 👉" class="flex-1 bg-slate-800/90 border border-slate-700 focus:border-amber-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
-                        <label class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-amber-300 text-xs font-semibold cursor-pointer flex items-center gap-1.5 shrink-0 transition-colors" title="Выбрать фото или скриншот из галереи">
+                        <input type="text" id="edit-image-input" placeholder="https://... или загрузите фото 👉" class="flex-1 bg-slate-800/90 border border-slate-700 focus:border-pink-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
+                        <label class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-pink-500/40 text-pink-300 text-xs font-semibold cursor-pointer flex items-center gap-1.5 shrink-0 transition-colors" title="Выбрать фото или скриншот из галереи">
                             <i class="fa-solid fa-upload"></i>
                             <span>Файл</span>
                             <input type="file" accept="image/*" class="hidden" onchange="handleFileUpload(this, 'edit-image-input')">
@@ -66,15 +66,15 @@
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Описание</label>
-                    <textarea id="edit-desc-input" rows="3" class="w-full bg-slate-800/90 border border-slate-700 focus:border-amber-400 rounded-xl px-3.5 py-2.5 text-sm text-white outline-none resize-none"></textarea>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-pink-300/80 mb-1.5">Описание</label>
+                    <textarea id="edit-desc-input" rows="3" class="w-full bg-slate-800/90 border border-slate-700 focus:border-pink-400 rounded-xl px-3.5 py-2.5 text-sm text-white outline-none resize-none"></textarea>
                 </div>
             </div>
             <div class="flex items-center justify-between gap-3 mt-6 pt-4 border-t border-slate-800">
                 <button onclick="resetItemCustomization()" class="text-xs text-rose-400 hover:text-rose-300 font-medium px-2 py-2">Сбросить</button>
                 <div class="flex gap-2">
                     <button onclick="closeEditModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm">Отмена</button>
-                    <button onclick="saveItemCustomization()" class="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-bold shadow-lg shadow-amber-500/20">Сохранить</button>
+                    <button onclick="saveItemCustomization()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 text-white text-sm font-bold shadow-lg shadow-pink-500/25">Сохранить</button>
                 </div>
             </div>
         </div>
@@ -82,61 +82,66 @@
 
     <!-- Модальное окно добавления подарка -->
     <div id="add-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
-        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-lg w-full p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+        <div class="bg-[#161024] border border-pink-500/30 rounded-3xl max-w-lg w-full p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto">
             <button onclick="closeAddModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <h3 class="text-xl font-bold text-white mb-1 flex items-center gap-2">
-                <i class="fa-solid fa-plus-circle text-emerald-400"></i>
+                <i class="fa-solid fa-heart-circle-plus text-pink-400"></i>
                 Добавить подарок по ссылке
             </h3>
-            <p class="text-xs text-slate-400 mb-4">Вставьте ссылку на WB, Ozon или DNS и нажмите «Заполнить».</p>
+            <p class="text-xs text-slate-400 mb-4">Вставьте ссылку (WB, Ozon, Золотое Яблоко, Яндекс Маркет, Lamoda, Лэтуаль, DNS, Steam) — карточка заполнится сама!</p>
             <div class="space-y-3.5">
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Ссылка или артикул</label>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-pink-300/80 mb-1">Ссылка или артикул</label>
                     <div class="flex gap-2">
-                        <input type="text" id="add-url-input" placeholder="https://www.wildberries.ru/... или Ozon/DNS" class="flex-1 bg-slate-800/90 border border-slate-700 focus:border-emerald-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
-                        <button onclick="autoFillFromUrl()" id="autofill-btn" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs sm:text-sm font-bold transition-all shrink-0 flex items-center gap-1.5 shadow-lg shadow-emerald-500/20">
+                        <input type="text" id="add-url-input" oninput="handleUrlInputDebounced()" placeholder="Вставьте ссылку на любой маркетплейс или Steam..." class="flex-1 bg-slate-800/90 border border-slate-700 focus:border-pink-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
+                        <button onclick="autoFillFromUrl()" id="autofill-btn" class="px-4 py-2 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 text-white text-xs sm:text-sm font-bold transition-all shrink-0 flex items-center gap-1.5 shadow-lg shadow-pink-500/25">
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
                             <span>Заполнить</span>
                         </button>
                     </div>
-                    <p id="autofill-status" class="text-[11px] text-amber-300 mt-1 hidden"></p>
+                    <p id="autofill-status" class="text-[11px] text-pink-300 mt-1 hidden"></p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Магазин</label>
-                        <select id="add-store-input" class="w-full bg-slate-800/90 border border-slate-700 focus:border-amber-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-pink-300/80 mb-1">Магазин</label>
+                        <select id="add-store-input" class="w-full bg-slate-800/90 border border-slate-700 focus:border-pink-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
                             <option value="wb">Wildberries</option>
                             <option value="ozon">Ozon</option>
+                            <option value="goldapple">Золотое Яблоко</option>
+                            <option value="ymarket">Яндекс Маркет</option>
+                            <option value="lamoda">Lamoda</option>
+                            <option value="letu">Лэтуаль</option>
                             <option value="dns">DNS</option>
+                            <option value="steam">Steam</option>
                             <option value="special18">Особое 18+ / Офлайн</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Цена (₽)</label>
-                        <input type="text" id="add-price-input" placeholder="Напр: ~3 490 ₽" class="w-full bg-slate-800/90 border border-slate-700 focus:border-amber-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-pink-300/80 mb-1">Цена (₽)</label>
+                        <input type="text" id="add-price-input" placeholder="Напр: ~3 490 ₽" class="w-full bg-slate-800/90 border border-slate-700 focus:border-pink-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
                     </div>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Артикул</label>
-                        <input type="text" id="add-article-input" placeholder="Напр: 12345678" class="w-full bg-slate-800/90 border border-slate-700 focus:border-amber-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-pink-300/80 mb-1">Артикул / ID</label>
+                        <input type="text" id="add-article-input" placeholder="Напр: 12345678" class="w-full bg-slate-800/90 border border-slate-700 focus:border-pink-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Плашка / Метка</label>
-                        <input type="text" id="add-spec-input" placeholder="Напр: Новая хотелка ✨" class="w-full bg-slate-800/90 border border-slate-700 focus:border-amber-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-pink-300/80 mb-1">Плашка / Метка</label>
+                        <input type="text" id="add-spec-input" placeholder="Напр: Бьюти-хотелка 💖" class="w-full bg-slate-800/90 border border-slate-700 focus:border-pink-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Название подарка</label>
-                    <input type="text" id="add-title-input" placeholder="Название товара" class="w-full bg-slate-800/90 border border-slate-700 focus:border-amber-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-pink-300/80 mb-1">Название подарка</label>
+                    <input type="text" id="add-title-input" placeholder="Название товара" class="w-full bg-slate-800/90 border border-slate-700 focus:border-pink-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Картинка (ссылка или скриншот из галереи)</label>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-pink-300/80 mb-1">Картинка (ссылка или скриншот из галереи)</label>
                     <div class="flex gap-2">
-                        <input type="text" id="add-image-input" placeholder="https://... или выберите фото 👉" class="flex-1 bg-slate-800/90 border border-slate-700 focus:border-amber-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
-                        <label class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-emerald-300 text-xs font-semibold cursor-pointer flex items-center gap-1.5 shrink-0 transition-colors" title="Выбрать фото или скриншот с телефона/ПК">
+                        <input type="text" id="add-image-input" placeholder="https://... или выберите фото 👉" class="flex-1 bg-slate-800/90 border border-slate-700 focus:border-pink-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none">
+                        <label class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-pink-500/40 text-pink-300 text-xs font-semibold cursor-pointer flex items-center gap-1.5 shrink-0 transition-colors" title="Выбрать фото или скриншот с телефона/ПК">
                             <i class="fa-solid fa-upload"></i>
                             <span>Фото</span>
                             <input type="file" accept="image/*" class="hidden" onchange="handleFileUpload(this, 'add-image-input')">
@@ -144,72 +149,56 @@
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Описание</label>
-                    <textarea id="add-desc-input" rows="2" placeholder="Короткое описание..." class="w-full bg-slate-800/90 border border-slate-700 focus:border-amber-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none resize-none"></textarea>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-pink-300/80 mb-1">Описание</label>
+                    <textarea id="add-desc-input" rows="2" placeholder="Короткое описание..." class="w-full bg-slate-800/90 border border-slate-700 focus:border-pink-400 rounded-xl px-3.5 py-2 text-sm text-white outline-none resize-none"></textarea>
                 </div>
             </div>
             <div class="flex items-center justify-end gap-2 mt-6 pt-4 border-t border-slate-800">
                 <button onclick="closeAddModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm">Отмена</button>
-                <button onclick="saveNewItem()" class="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-sm font-bold shadow-lg shadow-emerald-500/20">Добавить подарок</button>
+                <button onclick="saveNewItem()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 text-white text-sm font-bold shadow-lg shadow-pink-500/25">Добавить подарок</button>
             </div>
         </div>
     </div>
 
     <!-- Шапка сайта -->
     <header class="max-w-5xl mx-auto px-4 pt-8 pb-6 text-center relative z-10">
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-6 bg-slate-900/80 border border-slate-800 px-4 py-2.5 rounded-2xl backdrop-blur-md">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-6 bg-[#181128]/90 border border-pink-500/25 px-4 py-2.5 rounded-2xl backdrop-blur-md shadow-lg shadow-pink-950/20">
             <div class="flex items-center gap-2 text-xs font-medium">
-                <span id="sync-dot" class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
-                <span id="sync-text" class="text-slate-300">Подключение к Google Таблице (Лист Дусички)...</span>
-                <button onclick="syncWithSheet(true)" title="Обновить статусы" class="ml-1 text-slate-400 hover:text-white transition-colors">
+                <span id="sync-dot" class="w-2.5 h-2.5 rounded-full bg-pink-400 animate-pulse"></span>
+                <span id="sync-text" class="text-pink-100/90">Подключение к Google Таблице (Лист Дусички)...</span>
+                <button onclick="syncWithSheet(true)" title="Обновить статусы" class="ml-1 text-pink-300 hover:text-white transition-colors">
                     <i class="fa-solid fa-rotate"></i>
                 </button>
             </div>
-            <button onclick="openAddModal()" class="px-3.5 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold flex items-center gap-1.5 transition-all shadow-lg shadow-emerald-500/20">
+            <button onclick="openAddModal()" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-lg shadow-pink-500/25">
                 <i class="fa-solid fa-plus"></i>
                 <span>Добавить подарок по ссылке</span>
             </button>
         </div>
 
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-red-500/20 via-amber-500/20 to-emerald-500/20 border border-amber-400/30 rounded-full mb-5 text-amber-300 text-xs sm:text-sm font-semibold shadow-lg">
-            <i class="fa-solid fa-sleigh text-red-400 animate-bounce"></i>
-            <span>Официальная шпаргалка для Тайного Санты и друзей</span>
-            <i class="fa-solid fa-tree text-emerald-400"></i>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-pink-500/20 via-rose-500/20 to-amber-500/20 border border-pink-400/35 rounded-full mb-5 text-pink-200 text-xs sm:text-sm font-semibold shadow-lg">
+            <i class="fa-solid fa-wand-magic-sparkles text-pink-400 animate-bounce"></i>
+            <span>Официальная шпаргалка для Тайного Санты и близких</span>
+            <i class="fa-solid fa-heart text-rose-400"></i>
         </div>
 
-        <h1 class="serif-title text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-amber-200 via-white to-red-300 bg-clip-text text-transparent drop-shadow-sm">
-            Новогодний Вишлист Дусички 🎄
+        <h1 class="serif-title text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-pink-200 via-rose-100 to-amber-200 bg-clip-text text-transparent drop-shadow-sm">
+            Новогодний Вишлист Дусички 🎄💖
         </h1>
 
-        <p class="text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
-            Друзья, чтобы вы не ломали голову, что мне подарить под ёлочку — я собрал здесь всё самое нужное: от чёткого зрения и крутых кроссовок до апгрейда ПК! Выбирайте, копируйте артикул в один клик и отмечайте бронь, чтобы подарки не повторились ✨
+        <p class="text-pink-100/80 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
+            Друзья, чтобы вы не ломали голову, что мне подарить под ёлочку — я собрала здесь самые желанные хотелки: от косметики и стильных образов до уютных мелочей и игр! Выбирайте, копируйте артикул в один клик и отмечайте бронь, чтобы подарки не повторились ✨🌸
         </p>
 
-        <!-- Фильтры -->
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 no-scrollbar">
-            <button onclick="filterWishlist('all')" data-filter="all" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/25 flex items-center gap-2">
-                <i class="fa-solid fa-gifts"></i> <span id="count-all">Все подарки (0)</span>
-            </button>
-            <button onclick="filterWishlist('wb')" data-filter="wb" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-800/80 hover:bg-purple-900/50 text-slate-300 border border-slate-700/70 flex items-center gap-2">
-                <i class="fa-solid fa-bag-shopping text-purple-400"></i> <span id="count-wb">Wildberries (0)</span>
-            </button>
-            <button onclick="filterWishlist('ozon')" data-filter="ozon" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-800/80 hover:bg-blue-900/50 text-slate-300 border border-slate-700/70 flex items-center gap-2">
-                <i class="fa-solid fa-box-open text-blue-400"></i> <span id="count-ozon">Ozon (0)</span>
-            </button>
-            <button onclick="filterWishlist('dns')" data-filter="dns" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-800/80 hover:bg-amber-900/50 text-slate-300 border border-slate-700/70 flex items-center gap-2">
-                <i class="fa-solid fa-microchip text-amber-400"></i> <span id="count-dns">DNS (0)</span>
-            </button>
-            <button onclick="filterWishlist('special18')" data-filter="special18" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-800/80 hover:bg-rose-900/50 text-slate-300 border border-rose-500/40 flex items-center gap-2">
-                <i class="fa-solid fa-ban-smoking text-rose-400"></i> <span id="count-special18">Особое / Офлайн (0)</span>
-            </button>
-        </div>
+        <!-- Динамические фильтры -->
+        <div id="filter-bar" class="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 no-scrollbar"></div>
 
         <div class="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-slate-400">
-            <span id="stats-counter" class="px-3 py-1 rounded-lg bg-slate-900/70 border border-slate-800">Всего: 0</span>
-            <div class="flex items-center gap-1.5 bg-slate-900/70 border border-slate-800 px-3 py-1 rounded-lg">
-                <i class="fa-solid fa-sort text-amber-400"></i>
+            <span id="stats-counter" class="px-3 py-1 rounded-lg bg-[#181128]/80 border border-pink-500/20">Всего: 0</span>
+            <div class="flex items-center gap-1.5 bg-[#181128]/80 border border-pink-500/20 px-3 py-1 rounded-lg">
+                <i class="fa-solid fa-sort text-pink-400"></i>
                 <span>Сортировка по цене:</span>
-                <select id="sort-select" onchange="changeSort(this.value)" class="bg-transparent text-slate-200 font-semibold outline-none cursor-pointer">
+                <select id="sort-select" onchange="changeSort(this.value)" class="bg-transparent text-pink-200 font-semibold outline-none cursor-pointer">
                     <option value="default" class="bg-slate-900">По умолчанию</option>
                     <option value="price-asc" class="bg-slate-900">Сначала дешевле</option>
                     <option value="price-desc" class="bg-slate-900">Сначала дороже</option>
@@ -223,21 +212,33 @@
     </main>
 
     <footer class="max-w-4xl mx-auto px-4 mt-16 text-center relative z-10">
-        <div class="card-glass border border-slate-800/80 rounded-2xl p-5 max-w-xl mx-auto mb-6">
-            <p class="text-xs sm:text-sm text-slate-300 flex items-center justify-center gap-2 font-medium mb-1">
-                <i class="fa-solid fa-lightbulb text-amber-400"></i>
+        <div class="card-glass border border-pink-500/25 rounded-2xl p-5 max-w-xl mx-auto mb-6">
+            <p class="text-xs sm:text-sm text-pink-200 flex items-center justify-center gap-2 font-medium mb-1">
+                <i class="fa-solid fa-lightbulb text-pink-400"></i>
                 <span>Подсказка:</span>
             </p>
             <p class="text-xs text-slate-400 leading-relaxed">
-                Нажмите <span class="text-slate-200 font-semibold"><i class="fa-solid fa-camera"></i> «Своё фото»</span> на карточке для редактирования цены или фото. Добавить новую хотелку можно через зеленую кнопку вверху!
+                Нажмите <span class="text-pink-200 font-semibold"><i class="fa-solid fa-camera"></i> «Своё фото»</span> на карточке для редактирования цены или фото. Добавить новую хотелку можно через розовую кнопку вверху!
             </p>
         </div>
-        <p class="text-slate-500 text-xs">Сделано с новогодним настроением для Дусички 🎄❄️</p>
+        <p class="text-pink-300/50 text-xs">Сделано с любовью и новогодним настроением для Дусички 💖🎄❄️</p>
     </footer>
 
     <script>
         const BASE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxEjUfx8Az5IV957PrUOPG45QNM81PLj7FrGfY3inGf_ElZ1OW6VDCUwzBD056DFrX8/exec';
         const SCRIPT_URL = BASE_SCRIPT_URL + '?user=dusya';
+
+        const STORE_META = {
+            wb: { name: 'Wildberries', icon: 'fa-solid fa-bag-shopping', color: 'text-purple-400' },
+            ozon: { name: 'Ozon', icon: 'fa-solid fa-box-open', color: 'text-blue-400' },
+            goldapple: { name: 'Золотое Яблоко', icon: 'fa-solid fa-apple-whole', color: 'text-lime-400' },
+            ymarket: { name: 'Яндекс Маркет', icon: 'fa-solid fa-bag-shopping', color: 'text-amber-400' },
+            lamoda: { name: 'Lamoda', icon: 'fa-solid fa-shirt', color: 'text-fuchsia-300' },
+            letu: { name: 'Лэтуаль', icon: 'fa-solid fa-gem', color: 'text-cyan-400' },
+            dns: { name: 'DNS', icon: 'fa-solid fa-microchip', color: 'text-orange-400' },
+            steam: { name: 'Steam', icon: 'fa-brands fa-steam', color: 'text-sky-400' },
+            special18: { name: 'Особое / Офлайн', icon: 'fa-solid fa-heart', color: 'text-rose-400' }
+        };
 
         function getWbBasketInfo(nmId) {
             const id = parseInt(nmId, 10);
@@ -261,7 +262,10 @@
             else if (vol <= 2405) basket = '15';
             else if (vol <= 2621) basket = '16';
             else if (vol <= 2837) basket = '17';
-            else basket = '18';
+            else if (vol <= 3053) basket = '18';
+            else if (vol <= 3269) basket = '19';
+            else if (vol <= 3485) basket = '20';
+            else basket = '21';
             return { basket, vol, part, id };
         }
 
@@ -269,19 +273,6 @@
             const { basket, vol, part, id } = getWbBasketInfo(nmId);
             return `https://basket-${basket}.wbbasket.ru/vol${vol}/part${part}/${id}/images/big/1.webp`;
         }
-
-        const lensSvgDataUri = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
-                <rect width="600" height="400" fill="#1e1b4b"/>
-                <rect x="90" y="85" width="240" height="175" rx="20" fill="#ec4899" stroke="#f472b6" stroke-width="2"/>
-                <text x="150" y="125" fill="#ffffff" font-family="Arial" font-weight="bold" font-size="18">ADRIA SEASON</text>
-                <rect x="110" y="205" width="115" height="36" rx="10" fill="#ffffff"/>
-                <text x="167" y="229" fill="#be185d" font-family="Arial" font-weight="bold" font-size="19" text-anchor="middle">D: -0.75</text>
-                <rect x="300" y="165" width="210" height="145" rx="24" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="3"/>
-                <circle cx="365" cy="238" r="34" fill="#38bdf8" opacity="0.4"/>
-                <circle cx="455" cy="238" r="34" fill="#38bdf8" opacity="0.4"/>
-            </svg>
-        `);
 
         const defaultWishlistItems = [];
 
@@ -327,10 +318,10 @@
                 }
 
                 saveReservedState(reserved);
-                if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400';
+                if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-pink-400';
                 if (text) text.textContent = 'Лист Дусички подключен (синхронизировано)';
                 renderWishlist();
-                if (manual) showToast('Данные обновлены!', 'fa-rotate');
+                if (manual) showToast('Данные обновлены! 💖', 'fa-rotate');
             } catch (e) {
                 if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-amber-400';
                 if (text) text.textContent = 'Автономный режим (синхронизируется автоматически)';
@@ -344,7 +335,7 @@
             reserved[itemId] = nextState;
             saveReservedState(reserved);
             renderWishlist();
-            showToast(nextState ? 'Подарок отмечен как «Забронирован»! 🎅' : 'Бронь снята ✨', nextState ? 'fa-lock' : 'fa-lock-open');
+            showToast(nextState ? 'Подарок отмечен как «Забронирован»! 🎅💖' : 'Бронь снята ✨', nextState ? 'fa-lock' : 'fa-lock-open');
 
             try {
                 await fetch(BASE_SCRIPT_URL, {
@@ -382,22 +373,44 @@
 
         function changeSort(val) { currentSort = val; renderWishlist(); }
 
+        function renderFilterButtons(allItems) {
+            const bar = document.getElementById('filter-bar');
+            const counts = {};
+            Object.keys(STORE_META).forEach(k => counts[k] = 0);
+            allItems.forEach(i => { counts[i.store] = (counts[i.store] || 0) + 1; });
+
+            const defaultStores = ['wb', 'ozon', 'goldapple', 'ymarket', 'lamoda', 'letu', 'steam'];
+            let html = `
+                <button onclick="filterWishlist('all')" data-filter="all" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${currentFilter === 'all' ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg shadow-pink-500/25' : 'bg-[#181128]/90 hover:bg-pink-950/50 text-pink-100 border border-pink-500/25'} flex items-center gap-2">
+                    <i class="fa-solid fa-gifts"></i> <span>Все подарки (${allItems.length})</span>
+                </button>
+            `;
+
+            Object.keys(STORE_META).forEach(storeKey => {
+                if (counts[storeKey] > 0 || defaultStores.includes(storeKey)) {
+                    const meta = STORE_META[storeKey];
+                    const active = currentFilter === storeKey;
+                    html += `
+                        <button onclick="filterWishlist('${storeKey}')" data-filter="${storeKey}" class="filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${active ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg shadow-pink-500/25' : 'bg-[#181128]/90 hover:bg-pink-950/50 text-slate-200 border border-pink-500/20'} flex items-center gap-2">
+                            <i class="${meta.icon} ${active ? 'text-white' : meta.color}"></i> <span>${meta.name} (${counts[storeKey] || 0})</span>
+                        </button>
+                    `;
+                }
+            });
+            bar.innerHTML = html;
+        }
+
         function renderWishlist() {
             const grid = document.getElementById('wishlist-grid');
             const custom = getCustomizations();
             const reserved = getReservedState();
             const allItems = getAllWishlistItems();
 
-            const countByStore = (st) => allItems.filter(i => i.store === st).length;
-            document.getElementById('count-all').textContent = `Все подарки (${allItems.length})`;
-            document.getElementById('count-wb').textContent = `Wildberries (${countByStore('wb')})`;
-            document.getElementById('count-ozon').textContent = `Ozon (${countByStore('ozon')})`;
-            document.getElementById('count-dns').textContent = `DNS (${countByStore('dns')})`;
-            document.getElementById('count-special18').textContent = `Особое 18+ (${countByStore('special18')})`;
+            renderFilterButtons(allItems);
 
             const bookedCount = allItems.filter(i => !!reserved[i.id]).length;
             const freeCount = allItems.length - bookedCount;
-            document.getElementById('stats-counter').innerHTML = `Всего: <b class="text-white">${allItems.length}</b> • Свободно: <b class="text-emerald-400">${freeCount}</b> • Занято: <b class="text-amber-400">${bookedCount}</b>`;
+            document.getElementById('stats-counter').innerHTML = `Всего: <b class="text-white">${allItems.length}</b> • Свободно: <b class="text-pink-400">${freeCount}</b> • Занято: <b class="text-emerald-400">${bookedCount}</b>`;
 
             let filteredItems = allItems.filter(item => currentFilter === 'all' || item.store === currentFilter);
 
@@ -407,54 +420,74 @@
                 filteredItems.sort((a, b) => parsePriceNumber(custom[b.id]?.price || b.price) - parsePriceNumber(custom[a.id]?.price || a.price));
             }
 
+            if (filteredItems.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full card-glass border border-pink-500/25 rounded-3xl p-10 text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-pink-500/15 border border-pink-500/30 text-pink-400 flex items-center justify-center mx-auto mb-3 text-2xl">
+                            <i class="fa-solid fa-gift"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-1">Пока нет хотелок в этой категории ✨</h3>
+                        <p class="text-xs sm:text-sm text-slate-400 mb-4">Нажмите «Добавить подарок по ссылке», чтобы пополнить вишлист!</p>
+                        <button onclick="openAddModal()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white text-xs font-bold shadow-lg shadow-pink-500/25">
+                            <i class="fa-solid fa-plus mr-1"></i> Добавить хотелку
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
             grid.innerHTML = filteredItems.map(item => {
                 const itemCustom = custom[item.id] || {};
+                const style = getStoreStyleConfig(item.store);
                 const title = itemCustom.title || item.title;
                 const price = itemCustom.price || item.price || 'Цена по ссылке';
                 const description = itemCustom.description || item.description;
                 const imgUrl = itemCustom.image || item.primaryImage;
                 const isReserved = !!reserved[item.id];
+                const iconClass = (item.icon || style.icon).includes('fa-') && !(item.icon || style.icon).includes('fa-solid') && !(item.icon || style.icon).includes('fa-brands')
+                    ? `fa-solid ${item.icon || style.icon}`
+                    : (item.icon || style.icon);
 
                 return `
-                <article class="card-glass border ${isReserved ? 'border-emerald-500/40 opacity-85' : 'border-slate-700/70 ' + item.borderColor} rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 flex flex-col justify-between group relative">
+                <article class="card-glass border ${isReserved ? 'border-emerald-500/40 opacity-85' : 'border-pink-500/20 ' + (item.borderColor || style.borderColor)} rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 flex flex-col justify-between group relative">
                     <div>
                         <div class="relative h-56 w-full bg-slate-900 overflow-hidden">
                             <img src="${imgUrl}" alt="${String(title).replace(/"/g, '&quot;')}" onerror="if(this.src!=='${item.fallbackImage}'){this.src='${item.fallbackImage}';}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ${isReserved ? 'grayscale-[40%]' : ''}">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#111827] via-slate-950/20 to-transparent"></div>
-                            <span class="absolute top-3.5 left-3.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold border backdrop-blur-md shadow-lg ${item.badgeColor}">
-                                <i class="fa-solid ${item.icon}"></i> ${item.storeName}
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#181124] via-slate-950/20 to-transparent"></div>
+                            <span class="absolute top-3.5 left-3.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold border backdrop-blur-md shadow-lg ${item.badgeColor || style.badgeColor}">
+                                <i class="${iconClass}"></i> ${item.storeName || style.storeName}
                             </span>
-                            <span class="absolute top-12 left-3.5 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-xs font-extrabold bg-emerald-500/95 text-slate-950 border border-emerald-300 shadow-lg">
+                            <span class="absolute top-12 left-3.5 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-xs font-extrabold bg-pink-500/95 text-white border border-pink-300 shadow-lg">
                                 <i class="fa-solid fa-tag text-[10px]"></i> ${price}
                             </span>
                             ${item.is18Plus ? `<span class="absolute top-20 left-3.5 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-red-600 text-white border border-red-300 shadow-lg uppercase">🔞 18+</span>` : ''}
                             <div class="absolute top-3.5 right-3.5 flex items-center gap-1.5">
-                                <button onclick="openEditModal('${item.id}')" class="px-2.5 py-1 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-200 hover:text-amber-300 border border-slate-600/60 backdrop-blur-md text-[11px] font-medium flex items-center gap-1.5 transition-all shadow-md">
+                                <button onclick="openEditModal('${item.id}')" class="px-2.5 py-1 rounded-full bg-slate-900/80 hover:bg-slate-800 text-pink-100 hover:text-pink-300 border border-pink-500/30 backdrop-blur-md text-[11px] font-medium flex items-center gap-1.5 transition-all shadow-md">
                                     <i class="fa-solid fa-camera"></i> <span>Своё фото</span>
                                 </button>
                                 ${item.isCustomAdded ? `<button onclick="deleteAddedItem('${item.id}')" class="w-7 h-7 rounded-full bg-rose-950/85 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/40 flex items-center justify-center text-xs transition-all shadow-md"><i class="fa-solid fa-trash"></i></button>` : ''}
                             </div>
                             <div class="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between gap-2">
-                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold border backdrop-blur-md ${item.specColor}">
-                                    <i class="fa-solid fa-star text-[10px]"></i> ${item.specTag}
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold border backdrop-blur-md ${item.specColor || style.specColor}">
+                                    <i class="fa-solid fa-sparkles text-[10px]"></i> ${item.specTag}
                                 </span>
-                                ${item.article ? `<button onclick="copyArticle('${item.article}', '${item.storeName}')" class="px-2.5 py-1 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 text-xs font-mono flex items-center gap-1.5 transition-colors shadow"><span>Арт: ${item.article}</span><i class="fa-regular fa-copy text-[11px] text-amber-400"></i></button>` : `<span class="px-2.5 py-1 rounded-lg bg-rose-950/90 text-rose-200 border border-rose-500/40 text-xs font-semibold flex items-center gap-1.5 shadow"><i class="fa-solid fa-store text-[11px] text-rose-400"></i><span>Офлайн 18+</span></span>`}
+                                ${item.article ? `<button onclick="copyArticle('${item.article}', '${item.storeName || style.storeName}')" class="px-2.5 py-1 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-slate-200 hover:text-white border border-pink-500/30 text-xs font-mono flex items-center gap-1.5 transition-colors shadow"><span>${item.store === 'steam' ? 'AppID:' : 'Арт:'} ${item.article}</span><i class="fa-regular fa-copy text-[11px] text-pink-400"></i></button>` : `<span class="px-2.5 py-1 rounded-lg bg-rose-950/90 text-rose-200 border border-rose-500/40 text-xs font-semibold flex items-center gap-1.5 shadow"><i class="fa-solid fa-store text-[11px] text-rose-400"></i><span>Офлайн</span></span>`}
                             </div>
                         </div>
                         <div class="p-5 pb-3">
                             <div class="flex items-start justify-between gap-2 mb-2">
-                                <h3 class="text-lg font-bold text-white leading-snug group-hover:text-amber-200 transition-colors">${title}</h3>
-                                <span class="shrink-0 px-2.5 py-0.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold">${price}</span>
+                                <h3 class="text-lg font-bold text-white leading-snug group-hover:text-pink-200 transition-colors">${title}</h3>
+                                <span class="shrink-0 px-2.5 py-0.5 rounded-lg bg-pink-500/15 border border-pink-500/30 text-pink-300 text-xs font-bold">${price}</span>
                             </div>
                             <p class="text-slate-300 text-sm leading-relaxed">${description}</p>
                         </div>
                     </div>
-                    <div class="px-5 pb-5 pt-3 mt-2 flex items-center justify-between gap-2 border-t border-slate-800/80">
-                        <button onclick="toggleReserve('${item.id}')" class="px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all border ${isReserved ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40 hover:bg-emerald-500/30' : 'bg-slate-800/90 text-slate-300 border-slate-700 hover:bg-slate-700/80 hover:text-white'}">
-                            <i class="fa-solid ${isReserved ? 'fa-check-double text-emerald-400' : 'fa-hand-holding-heart text-rose-400'}"></i>
+                    <div class="px-5 pb-5 pt-3 mt-2 flex items-center justify-between gap-2 border-t border-pink-500/15">
+                        <button onclick="toggleReserve('${item.id}')" class="px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all border ${isReserved ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40 hover:bg-emerald-500/30' : 'bg-slate-800/90 text-pink-100 border-pink-500/25 hover:bg-pink-950/60 hover:text-white'}">
+                            <i class="fa-solid ${isReserved ? 'fa-check-double text-emerald-400' : 'fa-hand-holding-heart text-pink-400'}"></i>
                             <span>${isReserved ? 'Кем-то занято!' : 'Я подарю!'}</span>
                         </button>
-                        ${item.url ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 text-white text-xs sm:text-sm font-semibold rounded-xl transition-all shadow-lg ${item.btnColor}"><span>В магазин</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>` : `<span class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl select-none ${item.btnColor}"><span>🔞 Офлайн-магазин (18+)</span></span>`}
+                        ${item.url ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl transition-all shadow-lg ${item.btnColor || style.btnColor}"><span>${item.store === 'steam' ? 'Открыть в Steam' : 'В магазин'}</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>` : `<span class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl select-none ${item.btnColor || style.btnColor}"><span>🔞 Офлайн-магазин</span></span>`}
                     </div>
                 </article>
                 `;
@@ -463,11 +496,6 @@
 
         function filterWishlist(filter) {
             currentFilter = filter;
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.className = btn.getAttribute('data-filter') === filter
-                    ? 'filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/25 flex items-center gap-2'
-                    : 'filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/70 flex items-center gap-2';
-            });
             renderWishlist();
         }
 
@@ -500,7 +528,7 @@
             saveCustomizations(custom);
             closeEditModal();
             renderWishlist();
-            showToast('Карточка обновлена! ✨', 'fa-wand-magic-sparkles');
+            showToast('Карточка обновлена! 💖', 'fa-wand-magic-sparkles');
             try {
                 await fetch(BASE_SCRIPT_URL, {
                     method: 'POST',
@@ -531,14 +559,40 @@
             document.getElementById('add-modal').classList.remove('flex');
         }
 
+        let urlDebounceTimer = null;
+        function handleUrlInputDebounced() {
+            const val = document.getElementById('add-url-input').value.trim();
+            if (!val) return;
+            const detected = detectStoreFromInput(val);
+            if (detected) document.getElementById('add-store-input').value = detected;
+            if (val.includes('http://') || val.includes('https://') || /^\d{6,12}$/.test(val)) {
+                clearTimeout(urlDebounceTimer);
+                urlDebounceTimer = setTimeout(() => {
+                    if (!document.getElementById('add-title-input').value.trim()) {
+                        autoFillFromUrl();
+                    }
+                }, 450);
+            }
+        }
 
+        function detectStoreFromInput(raw) {
+            const low = raw.toLowerCase();
+            if (low.includes('wildberries.') || low.includes('wb.ru') || /^\d{7,12}$/.test(low.trim())) return 'wb';
+            if (low.includes('ozon.')) return 'ozon';
+            if (low.includes('goldapple.')) return 'goldapple';
+            if (low.includes('market.yandex.') || low.includes('ya.cc/m/')) return 'ymarket';
+            if (low.includes('lamoda.')) return 'lamoda';
+            if (low.includes('letu.ru')) return 'letu';
+            if (low.includes('dns-shop.') || low.includes('dns.ru')) return 'dns';
+            if (low.includes('steampowered.com') || low.includes('steamcommunity.com') || low.includes('s.team')) return 'steam';
+            return null;
+        }
 
-        // Расширенный словарь транслитерации и терминов для Ozon и DNS
         function decodeSlugToRussian(slug) {
             if (!slug) return '';
-            let s = slug.toLowerCase();
-            s = s.replace(/-\d{6,12}$/, '');
-            
+            let s = decodeURIComponent(slug).toLowerCase();
+            s = s.replace(/-\d{5,15}$/, '').replace(/^[a-z0-9]{10,14}-/i, '');
+
             const dict = {
                 'vr': 'VR', 'shlem': 'шлем', 'ochki': 'очки', 'oculus': 'Oculus', 'quest': 'Quest',
                 'globalnaya': 'глобальная', 'versiya': 'версия', 'mach': 'мАч', 'gb': 'ГБ', 'tb': 'ТБ',
@@ -550,9 +604,12 @@
                 'fioletovyj': 'фиолетовый', 'seryj': 'серый', 'serebristyj': 'серебристый', 'sinij': 'синий',
                 'krasnyj': 'красный', 'rozovyj': 'розовый', 'zelenyj': 'зеленый', 'zolotoj': 'золотой',
                 'zheltyj': 'желтый', 'oranzhevyj': 'оранжевый', 'bezhevyj': 'бежевый', 'korichnevyj': 'коричневый',
-                'krossovki': 'кроссовки', 'kedy': 'кеды', 'botinki': 'ботинки', 'muzhskie': 'мужские',
-                'zhenskie': 'женские', 'futbolka': 'футболка', 'tolstovka': 'толстовка', 'hudi': 'худи',
-                'kurtka': 'куртка', 'sumka': 'сумка', 'ryukzak': 'рюкзак', 'chasy': 'часы', 'smart': 'смарт',
+                'krossovki': 'кроссовки', 'kedy': 'кеды', 'botinki': 'ботинки', 'tufli': 'туфли', 'lofery': 'лоферы',
+                'sapogi': 'сапоги', 'bosonozhki': 'босоножки', 'muzhskie': 'мужские', 'zhenskie': 'женские',
+                'zhenskaya': 'женская', 'muzhskaya': 'мужская', 'futbolka': 'футболка', 'tolstovka': 'толстовка',
+                'hudi': 'худи', 'kurtka': 'куртка', 'palto': 'пальто', 'plate': 'платье', 'yubka': 'юбка',
+                'dzhinsy': 'джинсы', 'bryuki': 'брюки', 'sviter': 'свитер', 'kardigan': 'кардиган', 'pizhama': 'пижама',
+                'sumka': 'сумка', 'ryukzak': 'рюкзак', 'koshelek': 'кошелек', 'chasy': 'часы', 'smart': 'смарт',
                 'smartfon': 'смартфон', 'telefon': 'телефон', 'planshet': 'планшет', 'noutbuk': 'ноутбук',
                 'videokarta': 'видеокарта', 'processor': 'процессор', 'materinskaya': 'материнская', 'plata': 'плата',
                 'operativnaya': 'оперативная', 'pamyat': 'память', 'nakopitel': 'накопитель', 'zhestkij': 'жесткий',
@@ -561,51 +618,52 @@
                 'kreslo': 'кресло', 'stul': 'стул', 'stol': 'стол', 'kompyuternyj': 'компьютерный',
                 'kolonka': 'колонка', 'portativnaya': 'портативная', 'umnaya': 'умная', 'stanciya': 'станция',
                 'yandeks': 'Яндекс', 'alisa': 'Алиса', 'alisoj': 'Алисой', 'dlya': 'для', 's': 'с', 'i': 'и',
-                'nabor': 'набор', 'podstavka': 'подставка', 'derzhatel': 'держатель', 'kronshtejn': 'кронштейн',
+                'nabor': 'набор', 'podarochnyj': 'подарочный', 'podstavka': 'подставка', 'derzhatel': 'держатель',
                 'zaryadnoe': 'зарядное', 'ustrojstvo': 'устройство', 'setevoe': 'сетевое', 'kabel': 'кабель',
-                'adapter': 'адаптер', 'perehodnik': 'переходник', 'chehol': 'чехол', 'steklo': 'стекло',
-                'zashchitnoe': 'защитное', 'poverbank': 'повербанк', 'vneshnij': 'внешний', 'akkumulyator': 'аккумулятор',
-                'kofemashina': 'кофемашина', 'kofevarka': 'кофеварка', 'chajnik': 'чайник', 'elektrochajnik': 'электрочайник',
-                'fen': 'фен', 'stajler': 'стайлер', 'vypryamitel': 'выпрямитель', 'pylesos': 'пылесос',
-                'robot': 'робот', 'uvlazhnitel': 'увлажнитель', 'vozduha': 'воздуха', 'mikrovolnovaya': 'микроволновая',
-                'pech': 'печь', 'blender': 'блендер', 'mikser': 'миксер', 'toster': 'тостер', 'gril': 'гриль',
-                'parfyumernaya': 'парфюмерная', 'tualetnaya': 'туалетная', 'voda': 'вода', 'duhi': 'духи',
+                'chehol': 'чехол', 'steklo': 'стекло', 'poverbank': 'повербанк', 'vneshnij': 'внешний', 'akkumulyator': 'аккумулятор',
+                'kofemashina': 'кофемашина', 'kofevarka': 'кофеварка', 'chajnik': 'чайник', 'fen': 'фен', 'stajler': 'стайлер',
+                'vypryamitel': 'выпрямитель', 'pylesos': 'пылесос', 'robot': 'робот', 'uvlazhnitel': 'увлажнитель', 'vozduha': 'воздуха',
+                'parfyumernaya': 'парфюмерная', 'tualetnaya': 'туалетная', 'voda': 'вода', 'duhi': 'духи', 'parfyum': 'парфюм',
                 'krem': 'крем', 'syvorotka': 'сыворотка', 'maska': 'маска', 'shampun': 'шампунь', 'gel': 'гель',
+                'balzam': 'бальзам', 'pomada': 'помада', 'blesk': 'блеск', 'gub': 'губ', 'lica': 'лица', 'tela': 'тела',
+                'volos': 'волос', 'tush': 'тушь', 'teni': 'тени', 'rumyana': 'румяна', 'hajlajter': 'хайлайтер',
+                ' konsiler': 'консилер', 'tonalnyj': 'тональный', 'pudra': 'пудра', 'maslo': 'масло', 'skrab': 'скраб',
+                'penka': 'пенка', 'tonik': 'тоник', 'patchi': 'патчи', 'glaz': 'глаз', 'brovej': 'бровей', 'resnic': 'ресниц',
                 'svecha': 'свеча', 'aromaticheskaya': 'ароматическая', 'diffuzor': 'диффузор',
                 'pled': 'плед', 'podushka': 'подушка', 'odeyalo': 'одеяло', 'postelnoe': 'постельное', 'bele': 'белье',
                 'kruzhka': 'кружка', 'termokruzhka': 'термокружка', 'termos': 'термос', 'bokal': 'бокал',
                 'miski': 'миски', 'miska': 'миска', 'keramicheskie': 'керамические', 'koshki': 'кошки', 'sobak': 'собак',
                 'igrushka': 'игрушка', 'myagkaya': 'мягкая', 'konstruktor': 'конструктор', 'nastolnaya': 'настольная', 'igra': 'игра',
-                'mikrofon': 'микрофон', 'veb': 'веб', 'kamera': 'камера', 'kovrik': 'коврик', 'podsvetka': 'подсветка',
-                'lenta': 'лента', 'svetodiodnaya': 'светодиодная', 'lampa': 'лампа', 'nochnik': 'ночник', 'proektor': 'проектор'
+                'mikrofon': 'микрофон', 'kamera': 'камера', 'kovrik': 'коврик', 'podsvetka': 'подсветка', 'lampa': 'лампа', 'nochnik': 'ночник'
             };
 
-            const keepUpper = new Set(['vr', 'gb', 'tb', 'usb', 'rgb', 'led', 'ips', 'va', 'oled', 'qhd', 'uhd', 'fhd', '4k', '2k', 'pro', 'max', 'ultra', 'plus', 'mini', 'air', 'se', 'rog', 'tuf', 'rtx', 'gtx', 'rx', 'amd', 'ryzen', 'intel', 'core', 'ps5', 'ps4', 'xbox', 'tws', 'anc', 'wifi', 'bt', 'bluetooth', 'ssd', 'hdd', 'nvme', 'm2', 'dpi', 'hz', 'gc']);
+            const keepUpper = new Set(['vr', 'gb', 'tb', 'usb', 'rgb', 'led', 'ips', 'va', 'oled', 'qhd', 'uhd', 'fhd', '4k', '2k', 'pro', 'max', 'ultra', 'plus', 'mini', 'air', 'se', 'rog', 'tuf', 'rtx', 'gtx', 'rx', 'amd', 'ryzen', 'intel', 'core', 'ps5', 'ps4', 'xbox', 'tws', 'anc', 'wifi', 'bt', 'ssd', 'hdd', 'nvme', 'spf', 'edp', 'edt', 'ml']);
             const brands = {
                 'apple': 'Apple', 'iphone': 'iPhone', 'ipad': 'iPad', 'airpods': 'AirPods', 'macbook': 'MacBook',
                 'samsung': 'Samsung', 'odyssey': 'Odyssey', 'galaxy': 'Galaxy', 'xiaomi': 'Xiaomi', 'redmi': 'Redmi',
-                'poco': 'POCO', 'asus': 'ASUS', 'msi': 'MSI', 'gigabyte': 'Gigabyte', 'palit': 'Palit', 'sapphire': 'Sapphire',
-                'logitech': 'Logitech', 'razer': 'Razer', 'hyperx': 'HyperX', 'steelseries': 'SteelSeries', 'corsair': 'Corsair',
-                'ardor': 'ARDOR', 'gaming': 'GAMING', 'dark': 'Dark', 'project': 'Project', 'ajazz': 'Ajazz', 'aula': 'AULA',
-                '8bitdo': '8BitDo', 'sony': 'Sony', 'playstation': 'PlayStation', 'dualsense': 'DualSense',
-                'nintendo': 'Nintendo', 'switch': 'Switch', 'steam': 'Steam', 'deck': 'Deck',
-                'dyson': 'Dyson', 'philips': 'Philips', 'tefal': 'Tefal', 'kitfort': 'Kitfort', 'delonghi': 'DeLonghi',
-                'asics': 'ASICS', 'nike': 'Nike', 'adidas': 'Adidas', 'new': 'New', 'balance': 'Balance',
-                'puma': 'Puma', 'reebok': 'Reebok', 'vans': 'Vans', 'converse': 'Converse',
-                'adria': 'ADRIA', 'finick': 'Finick', 'falto': 'FALTO', 'meta': 'Meta', 'snapdragon': 'Snapdragon',
-                'jbl': 'JBL', 'marshall': 'Marshall', 'fifine': 'Fifine', 'maono': 'Maono', 'lg': 'LG', 'aoc': 'AOC',
-                'benq': 'BenQ', 'acer': 'Acer', 'lenovo': 'Lenovo', 'legion': 'Legion', 'huawei': 'HUAWEI', 'honor': 'HONOR',
-                'baseus': 'Baseus', 'ugreen': 'Ugreen', 'anker': 'Anker', 'lego': 'LEGO'
+                'poco': 'POCO', 'asus': 'ASUS', 'msi': 'MSI', 'gigabyte': 'Gigabyte', 'logitech': 'Logitech', 'razer': 'Razer',
+                'hyperx': 'HyperX', 'steelseries': 'SteelSeries', 'ardor': 'ARDOR', 'gaming': 'GAMING', '8bitdo': '8BitDo',
+                'sony': 'Sony', 'playstation': 'PlayStation', 'dualsense': 'DualSense', 'nintendo': 'Nintendo', 'switch': 'Switch',
+                'steam': 'Steam', 'deck': 'Deck', 'dyson': 'Dyson', 'philips': 'Philips', 'tefal': 'Tefal', 'kitfort': 'Kitfort',
+                'asics': 'ASICS', 'nike': 'Nike', 'adidas': 'Adidas', 'new': 'New', 'balance': 'Balance', 'puma': 'Puma',
+                'reebok': 'Reebok', 'vans': 'Vans', 'converse': 'Converse', 'zara': 'Zara', 'mango': 'Mango', 'befree': 'Befree',
+                'love': 'Love', 'republic': 'Republic', 'lime': 'LIME', 'sela': 'SELA', 'ekonika': 'Ekonika', 'guess': 'Guess',
+                'calvin': 'Calvin', 'klein': 'Klein', 'tommy': 'Tommy', 'hilfiger': 'Hilfiger', 'lacoste': 'Lacoste',
+                'dior': 'Dior', 'chanel': 'Chanel', 'givenchy': 'Givenchy', 'guerlain': 'Guerlain', 'lancome': 'Lancôme',
+                'ysl': 'YSL', 'armani': 'Armani', 'versace': 'Versace', 'chloe': 'Chloé', 'byredo': 'Byredo', 'zielinski': 'Zielinski',
+                'rozen': 'Rozen', 'clinique': 'Clinique', 'clarins': 'Clarins', 'estee': 'Estée', 'lauder': 'Lauder',
+                'shiseido': 'Shiseido', 'payot': 'Payot', 'darling': 'DARLING*', 'rad': 'RAD', 'pusy': 'PUSY', 'shik': 'SHIK',
+                'vivienne': 'Vivienne', 'sabo': 'Sabo', 'luxvisage': 'Luxvisage', 'loreal': "L'Oréal", 'maybelline': 'Maybelline',
+                'nyx': 'NYX', 'mac': 'MAC', 'erborian': 'Erborian', 'la': 'La', 'roche': 'Roche', 'posay': 'Posay', 'cerave': 'CeraVe',
+                'vichy': 'Vichy', 'bioderma': 'Bioderma', 'round': 'Round', 'lab': 'Lab', 'cosrx': 'COSRX', 'ma': 'Ma:', 'nyo': 'nyo',
+                'sultan': 'Sultan', 'de': 'de', 'saba': 'Saba', 'sol': 'Sol', 'janeiro': 'Janeiro', 'rhode': 'Rhode', 'rare': 'Rare', 'beauty': 'Beauty'
             };
 
             const translitWord = (w) => {
                 if (dict[w]) return dict[w];
                 if (brands[w]) return brands[w];
                 if (keepUpper.has(w)) return w.toUpperCase();
-                // Модели и коды типа g50sf, s27fg502si, 5090, xr2
-                if (/^\d+$/.test(w) || /^[a-z]+\d+[a-z0-9]*$/i.test(w) || /^\d+[a-z]+$/i.test(w)) {
-                    return w.toUpperCase();
-                }
+                if (/^\d+$/.test(w) || /^[a-z]+\d+[a-z0-9]*$/i.test(w) || /^\d+[a-z]+$/i.test(w)) return w.toUpperCase();
                 let res = w;
                 const multi = [
                     ['shch', 'щ'], ['sch', 'щ'], ['yo', 'ё'], ['zh', 'ж'], ['kh', 'х'],
@@ -619,154 +677,141 @@
                     'k':'к','l':'л','m':'м','n':'н','o':'о','p':'п','r':'р','s':'с','t':'т',
                     'u':'у','f':'ф','h':'х','c':'ц','y':'ы'
                 };
-                res = res.split('').map(ch => single[ch] || ch).join('');
-                return res;
+                return res.split('').map(ch => single[ch] || ch).join('');
             };
 
-            const words = s.split('-').filter(Boolean);
+            const words = s.split(/[-_]/).filter(Boolean);
             const converted = words.map(translitWord);
             let sentence = converted.join(' ');
-            if (sentence.length > 0) {
-                sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
-            }
+            if (sentence.length > 0) sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
             return sentence;
         }
 
-        // Интеллектуальный подбор красивой фотографии, описания и метки по названию товара!
         function getSmartCategoryProfile(title, store, article) {
             const t = (title || '').toLowerCase();
             const artText = article ? ` (арт. ${article})` : '';
 
+            if (store === 'steam') {
+                return {
+                    tag: 'Игра в Steam 🎮',
+                    img: article ? `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${article}/header.jpg` : 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=85',
+                    desc: `Желанная игра в коллекцию Steam${article ? ` (AppID: ${article})` : ''}! Идеальный подарок для уютных зимних вечеров и новогодних каникул 🎮❄️`
+                };
+            }
+
             const profiles = [
+                {
+                    keys: ['духи', 'парфюм', 'туалетная вода', 'парфюмерная', 'eau de', 'edp', 'edt', 'byredo', 'zielinski', 'dior', 'chanel', 'versace', 'chloe', 'аромат'],
+                    tag: 'Волшебный аромат 🌸',
+                    img: 'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=85',
+                    desc: `Роскошный аромат под новогоднюю ёлочку, который подарит шлейф праздничного настроения и уверенности каждый день! 🌸✨`
+                },
+                {
+                    keys: ['крем', 'сыворотк', 'маска', 'шампунь', 'косметик', 'бьюти', 'помада', 'блеск', 'тушь', 'румяна', 'хайлайтер', 'патчи', 'скраб', 'масло', 'пудра', 'консилер', 'гель', 'тоник', 'пенка', 'уход', 'darling', 'pusy', 'shik', 'erborian', 'clarins', 'clinique', 'rhode', 'sultan'],
+                    tag: 'Бьюти-хотелка 💖',
+                    img: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=85',
+                    desc: `Желанный бьюти-подарок для заботы о себе, прекрасного настроения и праздничного сияния каждый день! 💖✨`
+                },
+                {
+                    keys: ['фен', 'стайлер', 'dyson', 'выпрямитель', 'плойк'],
+                    tag: 'Идеальная укладка 💇‍♀️',
+                    img: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=85',
+                    desc: `Мечта для быстрой, бережной и салонной укладки волос дома каждый день! ✨💖`
+                },
+                {
+                    keys: ['платье', 'юбка', 'блуз', 'пальто', 'кардиган', 'свитер', 'худи', 'толстовк', 'футболк', 'куртк', 'джинс', 'брюк', 'пижам', 'халат', 'белье', 'костюм'],
+                    tag: 'Стильный образ 👗',
+                    img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=85',
+                    desc: `Стильная, уютная и очень красивая вещь в гардероб, которая будет радовать в новом году! 👗✨`
+                },
+                {
+                    keys: ['кроссовк', 'кеды', 'ботинк', 'туфли', 'лоферы', 'сапоги', 'босоножки', 'обувь', 'asics', 'nike', 'adidas', 'new balance', 'ekonika'],
+                    tag: 'Идеальная пара 👟',
+                    img: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=85',
+                    desc: `Стильная и суперудобная пара обуви для лёгкой походки и ярких образов в новом году! 👟💖`
+                },
+                {
+                    keys: ['сумк', 'рюкзак', 'кошелек', 'клатч', 'шоппер', 'обложк', 'украшен', 'кольц', 'серьг', 'подвеск', 'цепочк', 'браслет'],
+                    tag: 'Красивый аксессуар 👜',
+                    img: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=85',
+                    desc: `Элегантный и практичный аксессуар, который станет любимым акцентом в любом образе! ✨👜`
+                },
                 {
                     keys: ['видеокарт', 'rtx', 'geforce', 'radeon', 'gtx', 'videokarta'],
                     tag: 'Апгрейд ПК 🚀',
                     img: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=800&q=85',
-                    desc: `Мощное графическое ускорение для максимального FPS и ультра-настроек в любых играх! Настоящая мечта под новогоднюю ёлку 🚀🎮`
+                    desc: `Мощное графическое ускорение для максимального FPS и ультра-настроек в любых играх! 🚀🎮`
                 },
                 {
                     keys: ['монитор', 'monitor', 'odyssey', 'qhd', 'uhd', 'экран', 'дисплей'],
                     tag: 'Сочная картинка 🖥️',
                     img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=85',
-                    desc: `Чёткая и плавная картинка, глубокие цвета и полное погружение в любимые игры, фильмы и проекты! 🖥️✨`
+                    desc: `Чёткая и плавная картинка, глубокие цвета и полное погружение в любимые игры и фильмы! 🖥️✨`
                 },
                 {
                     keys: ['геймпад', 'джойстик', '8bitdo', 'dualsense', 'xbox', 'контроллер', 'gejmpad'],
                     tag: 'Для уютных каток 🎮',
                     img: 'https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=800&q=85',
-                    desc: `Удобный и отзывчивый контроллер, который идеально лежит в руках — то что нужно для новогодних игровых марафонов! 🎮🔥`
+                    desc: `Удобный и отзывчивый контроллер для новогодних игровых марафонов! 🎮🔥`
                 },
                 {
-                    keys: ['клавиатур', 'klaviatura', 'keycap', 'механическ'],
-                    tag: 'Тайпинг и стиль ⌨️',
+                    keys: ['клавиатур', 'klaviatura', 'keycap', 'механическ', 'мышь', 'мышка', 'mysh'],
+                    tag: 'Эстетика сетапа ⌨️',
                     img: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=85',
-                    desc: `Приятнейший ход клавиш, стильная подсветка и максимальный комфорт как в динамичных катках, так и за работой! ⌨️✨`
-                },
-                {
-                    keys: ['мышь', 'мышка', 'mysh', 'logitech g', 'razer', 'сенсор'],
-                    tag: 'Точный прицел 🖱️',
-                    img: 'https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=800&q=85',
-                    desc: `Лёгкая, точная и эргономичная мышка с отличным сенсором для победных каток и комфортной работы за ПК! 🖱️⚡`
+                    desc: `Стильный и удобный девайс для максимального комфорта в играх и за работой! ⌨️✨`
                 },
                 {
                     keys: ['наушник', 'гарнитур', 'airpods', 'tws', 'naushniki', 'marshall', 'sony wh'],
                     tag: 'Чистый звук 🎧',
                     img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=85',
-                    desc: `Объёмное и чистое звучание для любимой музыки, полного погружения в игры и новогоднего настроения без лишнего шума! 🎧🎵`
+                    desc: `Объёмное и чистое звучание для любимой музыки и полного погружения без лишнего шума! 🎧🎵`
                 },
                 {
-                    keys: ['vr', 'шлем', 'oculus', 'quest', 'виртуальн'],
-                    tag: 'Виртуальная реальность 🥽',
-                    img: 'https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&w=800&q=85',
-                    desc: `Билет в другие миры прямо из дома! Полное погружение в VR-игры и интерактивные приключения на каникулах 🥽🌌`
-                },
-                {
-                    keys: ['кресло', 'стул', 'falto', 'kreslo', 'трон'],
-                    tag: 'Максимальный комфорт 💺',
-                    img: 'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&w=800&q=85',
-                    desc: `Эргономичная поддержка спины и королевский комфорт для долгих вечеров за компьютером и отдыха! 💺👑`
-                },
-                {
-                    keys: ['кроссовк', 'кеды', 'ботинк', 'обувь', 'asics', 'nike', 'adidas', 'new balance', 'krossovki'],
-                    tag: 'Стильный шаг 👟',
-                    img: 'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=800&q=85',
-                    desc: `Стильная, лёгкая и суперудобная пара обуви с отличной амортизацией для прогулок и приключений в новом году! 👟🔥`
-                },
-                {
-                    keys: ['худи', 'толстовк', 'футболк', 'куртк', 'свитер', 'одежд', 'пижам', 'халат', 'плед'],
-                    tag: 'Уют и стиль 🧥',
-                    img: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=85',
-                    desc: `Тёплый, мягкий и очень уютный подарок, который будет радовать и согревать всю зиму! 🧣❄️`
-                },
-                {
-                    keys: ['духи', 'парфюм', 'туалетная вода', 'крем', 'сыворотк', 'маска', 'шампунь', 'косметик', 'бьюти', 'dyson', 'фен', 'стайлер'],
-                    tag: 'Красота и уход 💖',
-                    img: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=85',
-                    desc: `Желанный бьюти-подарок для заботы о себе, прекрасного настроения и праздничного сияния каждый день! 💖✨`
-                },
-                {
-                    keys: ['кофе', 'чайник', 'кружк', 'термос', 'бокал', 'посуд', 'кухн', 'блендер', 'тостер', 'гриль', 'аэрогриль'],
-                    tag: 'Вкус и уют ☕',
+                    keys: ['кофе', 'чайник', 'кружк', 'термос', 'бокал', 'посуд', 'кухн', 'блендер', 'тостер', 'гриль', 'аэрогриль', 'свеча', 'диффузор', 'плед'],
+                    tag: 'Домашний уют ☕',
                     img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=85',
-                    desc: `Для самых уютных зимних вечеров, ароматных напитков и кулинарных шедевров в домашней атмосфере! ☕🎄`
+                    desc: `Для самых уютных зимних вечеров, тёплой атмосферы и праздничного настроения дома! ☕🎄`
                 },
                 {
                     keys: ['кошк', 'кот', 'собак', 'миск', 'finick', 'когтеточк', 'лежанк', 'питомц'],
                     tag: 'Пушистому боссу 🐾',
                     img: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=85',
-                    desc: `Стильный и полезный подарок для главного пушистого хозяина дома — чтобы у котика тоже был настоящий Новый год! 🐱🐾`
-                },
-                {
-                    keys: ['смартфон', 'телефон', 'iphone', 'samsung galaxy', 'xiaomi', 'poco', 'планшет', 'ipad'],
-                    tag: 'Топ-гаджет 📱',
-                    img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=85',
-                    desc: `Современный, быстрый и яркий гаджет, который всегда под рукой — супер-подарок под ёлочку! 📱✨`
-                },
-                {
-                    keys: ['часы', 'watch', 'браслет'],
-                    tag: 'Стильный аксессуар ⌚',
-                    img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=85',
-                    desc: `Стильный и функциональный аксессуар на каждый день, который отлично дополнит любой образ! ⌚✨`
-                },
-                {
-                    keys: ['колонка', 'станция', 'алиса', 'яндекс', 'jbl', 'звук'],
-                    tag: 'Музыка и умный дом 🔊',
-                    img: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=85',
-                    desc: `Для атмосферной музыки, управления умным домом и создания праздничного настроения в любой момент! 🔊🎶`
-                },
-                {
-                    keys: ['микрофон', 'веб-камер', 'стрим', 'fifine', 'подсветк', 'лампа', 'ночник', 'свеча', 'диффузор'],
-                    tag: 'Атмосфера и уют ✨',
-                    img: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=800&q=85',
-                    desc: `Добавит максимум уюта, качественного звука или тёплого света в рабочее и игровое пространство! ✨🎄`
-                },
-                {
-                    keys: ['ssd', 'диск', 'память', 'флешк', 'повербанк', 'аккумулятор', 'заряд', 'кабель', 'процессор', 'кулер', 'корпус'],
-                    tag: 'Полезное железо ⚡',
-                    img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=85',
-                    desc: `Незаменимая вещь для прокачки сетапа, высокой скорости работы и надёжности каждый день! ⚡🔧`
-                },
-                {
-                    keys: ['конструктор', 'lego', 'настольн', 'игр', 'пазл', 'игрушк'],
-                    tag: 'Для души и фана 🎲',
-                    img: 'https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?auto=format&fit=crop&w=800&q=85',
-                    desc: `Отличный повод собраться вместе на новогодних праздниках или с удовольствием провести вечер! 🎲🎄`
-                },
-                {
-                    keys: ['сумк', 'рюкзак', 'кошелек', 'обложк', 'украшен', 'кольц', 'серьг', 'подвеск', 'цепочк'],
-                    tag: 'Красивый аксессуар 👜',
-                    img: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=85',
-                    desc: `Элегантный и практичный аксессуар, который будет радовать глаз и дополнять любимые образы! ✨👜`
+                    desc: `Полезный подарок для главного пушистого хозяина дома — чтобы у котика тоже был Новый год! 🐱🐾`
                 }
             ];
 
             for (const p of profiles) {
-                if (p.keys.some(k => t.includes(k))) {
-                    return p;
-                }
+                if (p.keys.some(k => t.includes(k))) return p;
             }
 
-            // Если категория не угадана по словам — выдаём профиль по магазину
+            if (store === 'goldapple') {
+                return {
+                    tag: 'Золотое Яблоко 🍏',
+                    img: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=85',
+                    desc: `Желанная бьюти-находка из Золотого Яблока${artText}! Подарит море удовольствия и сияния в новом году 🍏💖`
+                };
+            }
+            if (store === 'letu') {
+                return {
+                    tag: 'Лэтуаль Бьюти 💎',
+                    img: 'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=85',
+                    desc: `Прекрасный подарок из Лэтуаль${artText} для красоты, ухода и праздничного настроения! 💎✨`
+                };
+            }
+            if (store === 'lamoda') {
+                return {
+                    tag: 'Стиль с Lamoda 👗',
+                    img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=85',
+                    desc: `Стильная хотелка с Lamoda${artText}, которая идеально дополнит гардероб в новом году! 👗✨`
+                };
+            }
+            if (store === 'ymarket') {
+                return {
+                    tag: 'Яндекс Маркет 🛍️',
+                    img: 'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=800&q=85',
+                    desc: `Отличная находка на Яндекс Маркете${artText} под новогоднюю ёлочку! 🛍️🎄`
+                };
+            }
             if (store === 'dns') {
                 return {
                     tag: 'Техника из DNS ⚡',
@@ -782,9 +827,9 @@
                 };
             }
             return {
-                tag: 'Новогодняя хотелка ✨',
+                tag: 'Новогодняя хотелка 💖',
                 img: 'https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=800&q=85',
-                desc: `Очень желанный подарок под новогоднюю ёлочку${artText}! Подарит море радости и праздничного настроения 🎄✨`
+                desc: `Очень желанный подарок под новогоднюю ёлочку${artText}! Подарит море радости и праздничного настроения 🎄💖`
             };
         }
 
@@ -798,9 +843,16 @@
                    low.includes('почти готово') ||
                    low.includes('вы почти') ||
                    low.includes('подтвердите') ||
+                   low.includes('я не робот') ||
+                   low.includes('captcha') ||
+                   low.includes('капча') ||
                    low.includes('ozon.ru — интернет-магазин') ||
                    low === 'ozon' ||
                    low === 'dns' ||
+                   low === 'золотое яблоко' ||
+                   low === 'лэтуаль' ||
+                   low === 'яндекс маркет' ||
+                   low === 'lamoda' ||
                    low.includes('cloudflare') ||
                    low.includes('attention required') ||
                    low.includes('403 forbidden') ||
@@ -824,7 +876,125 @@
                    low.includes('dns-shop.ru/static');
         }
 
-        // Сжатие загружаемого с телефона/ПК фото или скриншота
+        function cleanScrapedTitle(rawTitle) {
+            if (!rawTitle) return '';
+            return rawTitle
+                .replace(/\s*[—\-|•].*(купить|ozon|озон|dns|днс|золотое яблоко|gold apple|яндекс маркет|lamoda|ламода|лэтуаль|letu|интернет-магазин|в интернет-магазине|по выгодной цене|с доставкой).*$/i, '')
+                .replace(/^купить\s+/i, '')
+                .replace(/\s+в\s+интернет-магазине.*$/i, '')
+                .trim();
+        }
+
+        function parseUrlDetailsByStore(rawInput, store) {
+            let article = '';
+            let slugTitle = '';
+            try {
+                const u = new URL(rawInput);
+                const segs = u.pathname.split('/').filter(Boolean);
+
+                if (store === 'dns') {
+                    const slugCandidates = segs.filter(s => s.includes('-') && !['product', 'characteristics', 'opinion', 'communicator'].includes(s));
+                    if (slugCandidates.length > 0) {
+                        slugCandidates.sort((a, b) => b.length - a.length);
+                        slugTitle = decodeSlugToRussian(slugCandidates[0]);
+                    }
+                    if (u.searchParams.get('q')) article = u.searchParams.get('q');
+                    if (!article) {
+                        const codeMatch = rawInput.match(/\/product\/(?:characteristics\/)?([a-z0-9]{8,20})\//i);
+                        if (codeMatch) article = codeMatch[1].slice(0, 8);
+                    }
+                } else if (store === 'ozon') {
+                    const prodSeg = segs.find(s => s.includes('-') && s !== 'product');
+                    if (prodSeg) {
+                        const m = prodSeg.match(/^(.*?)-(\d{6,12})$/);
+                        if (m) { slugTitle = decodeSlugToRussian(m[1]); article = m[2]; }
+                        else slugTitle = decodeSlugToRussian(prodSeg);
+                    }
+                    if (!article && u.searchParams.get('text')) article = u.searchParams.get('text');
+                    if (!article) {
+                        const ozonArt = rawInput.match(/-(\d{7,12})\/?(?:\?|$)/) || rawInput.match(/\/product\/(\d{7,12})/);
+                        if (ozonArt) article = ozonArt[1];
+                    }
+                } else if (store === 'goldapple') {
+                    const lastSeg = segs[segs.length - 1] || '';
+                    const gaMatch = lastSeg.match(/^(\d{5,15})-(.+)$/) || lastSeg.match(/^(.+)-(\d{5,15})$/);
+                    if (gaMatch) {
+                        if (/^\d+$/.test(gaMatch[1])) { article = gaMatch[1]; slugTitle = decodeSlugToRussian(gaMatch[2]); }
+                        else { slugTitle = decodeSlugToRussian(gaMatch[1]); article = gaMatch[2]; }
+                    } else if (/^\d{5,15}$/.test(lastSeg)) {
+                        article = lastSeg;
+                    } else if (lastSeg.includes('-')) {
+                        slugTitle = decodeSlugToRussian(lastSeg);
+                    }
+                } else if (store === 'ymarket') {
+                    const skuParam = u.searchParams.get('sku');
+                    if (skuParam) article = skuParam;
+                    const prodSeg = segs.find(s => s.startsWith('product--')) || segs.find(s => s.includes('-') && !['card', 'catalog'].includes(s));
+                    if (prodSeg) {
+                        const cleanSeg = prodSeg.replace(/^product--/, '');
+                        slugTitle = decodeSlugToRussian(cleanSeg);
+                    }
+                    if (!article) {
+                        const idSeg = segs.find(s => /^\d{6,15}$/.test(s));
+                        if (idSeg) article = idSeg;
+                    }
+                } else if (store === 'lamoda') {
+                    const pIndex = segs.indexOf('p');
+                    if (pIndex !== -1 && segs[pIndex + 1]) {
+                        article = segs[pIndex + 1].toUpperCase();
+                        if (segs[pIndex + 2]) slugTitle = decodeSlugToRussian(segs[pIndex + 2]);
+                    } else {
+                        const skuMatch = rawInput.match(/\/p\/([a-z0-9]{8,16})\/?(?:([^/?#]+))?/i);
+                        if (skuMatch) {
+                            article = skuMatch[1].toUpperCase();
+                            if (skuMatch[2]) slugTitle = decodeSlugToRussian(skuMatch[2]);
+                        }
+                    }
+                } else if (store === 'letu') {
+                    const pIndex = segs.indexOf('product');
+                    if (pIndex !== -1) {
+                        const slugSeg = segs[pIndex + 1] || '';
+                        const idSeg = segs[pIndex + 2] || '';
+                        if (/^\d+$/.test(idSeg)) article = idSeg;
+                        const tailId = slugSeg.match(/^(.*?)-(\d{5,14})$/);
+                        if (tailId) {
+                            slugTitle = decodeSlugToRussian(tailId[1]);
+                            if (!article) article = tailId[2];
+                        } else if (slugSeg) {
+                            slugTitle = decodeSlugToRussian(slugSeg);
+                        }
+                    }
+                } else if (store === 'steam') {
+                    const appMatch = rawInput.match(/\/app\/(\d+)(?:\/([^/?#]+))?/i);
+                    if (appMatch) {
+                        article = appMatch[1];
+                        if (appMatch[2]) {
+                            slugTitle = decodeURIComponent(appMatch[2]).replace(/_/g, ' ').trim();
+                        }
+                    }
+                }
+            } catch (e) {}
+            return { article, slugTitle };
+        }
+
+        async function fetchFallbackMetadataViaProxy(url) {
+            try {
+                const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+                if (!res.ok) return null;
+                const data = await res.json();
+                const html = data.contents || '';
+                if (!html) return null;
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                const ogTitle = doc.querySelector('meta[property="og:title"]')?.getAttribute('content') || doc.querySelector('title')?.textContent || '';
+                const ogDesc = doc.querySelector('meta[property="og:description"]')?.getAttribute('content') || doc.querySelector('meta[name="description"]')?.getAttribute('content') || '';
+                const ogImg = doc.querySelector('meta[property="og:image"]')?.getAttribute('content') || '';
+                const ogPrice = doc.querySelector('meta[property="product:price:amount"]')?.getAttribute('content') || doc.querySelector('meta[itemprop="price"]')?.getAttribute('content') || '';
+                return { title: ogTitle.trim(), desc: ogDesc.trim(), img: ogImg.trim(), price: ogPrice.trim() };
+            } catch (e) {
+                return null;
+            }
+        }
+
         function compressImageFileToDataUrl(file, callback) {
             if (!file) return;
             const reader = new FileReader();
@@ -863,7 +1033,7 @@
             const btn = document.getElementById('autofill-btn');
             if (!rawInput) { showToast('Вставьте ссылку или артикул!', 'fa-circle-exclamation'); return; }
             statusEl.classList.remove('hidden');
-            statusEl.textContent = '⏳ Анализируем ссылку, генерируем название, фото и описание...';
+            statusEl.textContent = '⏳ Распознаём магазин, вытаскиваем название, фото и описание...';
             btn.disabled = true;
 
             try {
@@ -871,16 +1041,18 @@
                 const urlInTextMatch = rawInput.match(/(https?:\/\/[^\s]+)/i);
                 let prefixTextTitle = '';
                 if (urlInTextMatch && rawInput.length > urlInTextMatch[1].length + 5) {
-                    prefixTextTitle = rawInput.replace(urlInTextMatch[1], '').replace(/^[\s\-—:]+|[\s\-—:]+$/g, '').trim();
+                    prefixTextTitle = rawInput.replace(urlInTextMatch[1], '').replace(/^[\s\-—:«"']+|[\s\-—:»"']+$/g, '').trim();
                     rawInput = urlInTextMatch[1];
                     document.getElementById('add-url-input').value = rawInput;
                 }
 
+                const detectedStore = detectStoreFromInput(rawInput) || document.getElementById('add-store-input').value;
+                document.getElementById('add-store-input').value = detectedStore;
+
                 // 1. Wildberries (прямое API WB)
-                const wbMatch = rawInput.match(/catalog\/(\d+)/) || rawInput.match(/^(\d{6,12})$/);
-                if (wbMatch || rawInput.includes('wildberries.ru')) {
+                const wbMatch = rawInput.match(/catalog\/(\d+)/) || rawInput.match(/^(\d{7,12})$/);
+                if (detectedStore === 'wb' && (wbMatch || rawInput.includes('wildberries.') || rawInput.includes('wb.ru'))) {
                     const nmId = wbMatch ? wbMatch[1] : rawInput.replace(/[^\d]/g, '');
-                    document.getElementById('add-store-input').value = 'wb';
                     document.getElementById('add-article-input').value = nmId;
                     document.getElementById('add-image-input').value = getWbImageUrls(nmId);
                     if (!rawInput.startsWith('http')) document.getElementById('add-url-input').value = `https://www.wildberries.ru/catalog/${nmId}/detail.aspx`;
@@ -912,74 +1084,80 @@
                     document.getElementById('add-title-input').value = wbTitle || `Подарок с Wildberries (${nmId})`;
                     document.getElementById('add-desc-input').value = wbDesc || prof.desc;
                     document.getElementById('add-spec-input').value = prof.tag;
-                    statusEl.textContent = '✅ Товар с Wildberries полностью загружен (название, фото, цена и описание)!';
+                    statusEl.textContent = '✅ Товар с Wildberries полностью распознан!';
                     btn.disabled = false;
                     return;
                 }
 
-                // 2. Разбор ссылок Ozon и DNS (любые форматы ссылок, включая /characteristics/, мобильные и поисковые)
-                let store = 'ozon';
-                let article = '';
-                let slugTitle = '';
-
-                if (rawInput.includes('dns-shop.ru')) {
-                    store = 'dns';
-                    document.getElementById('add-store-input').value = 'dns';
-                    try {
-                        const u = new URL(rawInput);
-                        const segs = u.pathname.split('/').filter(Boolean);
-                        // Ищем самый длинный сегмент с дефисами (это всегда транслит-название товара в DNS)
-                        const slugCandidates = segs.filter(s => s.includes('-') && !['product', 'characteristics', 'opinion', 'communicator'].includes(s));
-                        if (slugCandidates.length > 0) {
-                            slugCandidates.sort((a, b) => b.length - a.length);
-                            slugTitle = decodeSlugToRussian(slugCandidates[0]);
-                        }
-                        if (u.searchParams.get('q')) {
-                            article = u.searchParams.get('q');
-                        }
-                    } catch (e) {}
-                    if (!article) {
-                        const codeMatch = rawInput.match(/\/product\/(?:characteristics\/)?([a-z0-9]{8,20})\//i);
-                        if (codeMatch) article = codeMatch[1].slice(0, 8);
+                // 2. Steam (прямая обложка с CDN Steam + парсинг названия и цены)
+                if (detectedStore === 'steam') {
+                    const { article: appId, slugTitle } = parseUrlDetailsByStore(rawInput, 'steam');
+                    if (appId) {
+                        document.getElementById('add-article-input').value = appId;
+                        document.getElementById('add-image-input').value = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/header.jpg`;
                     }
-                    if (article) document.getElementById('add-article-input').value = article;
-                } else if (rawInput.includes('ozon.')) {
-                    store = 'ozon';
-                    document.getElementById('add-store-input').value = 'ozon';
+                    let steamTitle = prefixTextTitle || slugTitle || '';
+                    let steamDesc = '';
+                    let steamPrice = '';
+
                     try {
-                        const u = new URL(rawInput);
-                        const segs = u.pathname.split('/').filter(Boolean);
-                        const prodSeg = segs.find(s => s.includes('-') && s !== 'product');
-                        if (prodSeg) {
-                            const m = prodSeg.match(/^(.*?)-(\d{6,12})$/);
-                            if (m) {
-                                slugTitle = decodeSlugToRussian(m[1]);
-                                article = m[2];
-                            } else {
-                                slugTitle = decodeSlugToRussian(prodSeg);
+                        const mlRes = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(rawInput)}`);
+                        if (mlRes.ok) {
+                            const mlData = await mlRes.json();
+                            if (mlData.status === 'success' && mlData.data) {
+                                const t = (mlData.data.title || '').replace(/^Save \d+% on /i, '').replace(/ on Steam$/i, '').replace(/ в Steam$/i, '').trim();
+                                if (t && !isBadScrapedTitle(t)) steamTitle = t;
+                                if (mlData.data.description && mlData.data.description.length > 15) {
+                                    steamDesc = mlData.data.description.slice(0, 220);
+                                }
                             }
                         }
-                        if (!article && u.searchParams.get('text')) {
-                            article = u.searchParams.get('text');
-                        }
-                    } catch (e) {}
-                    if (!article) {
-                        const ozonArt = rawInput.match(/-(\d{7,12})\/?(?:\?|$)/) || rawInput.match(/\/product\/(\d{7,12})/);
-                        if (ozonArt) article = ozonArt[1];
+                    } catch(e) {}
+
+                    if (appId) {
+                        try {
+                            const proxyRes = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://store.steampowered.com/api/appdetails?appids=${appId}&cc=ru&l=russian`)}`);
+                            if (proxyRes.ok) {
+                                const pJson = await proxyRes.json();
+                                const steamData = JSON.parse(pJson.contents);
+                                const info = steamData?.[appId]?.data;
+                                if (info) {
+                                    if (info.name) steamTitle = info.name;
+                                    if (info.short_description) steamDesc = info.short_description.replace(/<[^>]*>/g, '').slice(0, 220);
+                                    if (info.price_overview?.final_formatted) steamPrice = info.price_overview.final_formatted;
+                                    else if (info.is_free) steamPrice = 'Бесплатно';
+                                }
+                            }
+                        } catch(e) {}
                     }
-                    if (article) document.getElementById('add-article-input').value = article;
+
+                    const prof = getSmartCategoryProfile(steamTitle, 'steam', appId);
+                    document.getElementById('add-title-input').value = steamTitle || (appId ? `Игра в Steam #${appId}` : 'Игра в Steam');
+                    document.getElementById('add-desc-input').value = steamDesc || prof.desc;
+                    document.getElementById('add-spec-input').value = prof.tag;
+                    if (steamPrice && !document.getElementById('add-price-input').value) {
+                        document.getElementById('add-price-input').value = steamPrice;
+                    }
+                    statusEl.innerHTML = '✅ <b>Игра из Steam распознана!</b> Официальная обложка и описание подтянуты автоматически 🎮';
+                    btn.disabled = false;
+                    return;
                 }
 
-                // 3. Попытка вытащить живой заголовок/фото через Microlink (если антибот пропустит)
+                // 3. Разбор ссылок Золотое Яблоко, Яндекс Маркет, Lamoda, Лэтуаль, Ozon, DNS
+                const { article, slugTitle } = parseUrlDetailsByStore(rawInput, detectedStore);
+                if (article) document.getElementById('add-article-input').value = article;
+
                 let scrapedTitle = '';
                 let scrapedDesc = '';
                 let scrapedImg = '';
+                let scrapedPrice = '';
+
                 try {
                     const mlRes = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(rawInput)}`);
                     if (mlRes.ok) {
                         const mlData = await mlRes.json();
                         if (mlData.status === 'success' && mlData.data) {
-                            const candTitle = (mlData.data.title || '').replace(/\s*[—\-|].*(купить|ozon|озон|dns|днс|интернет-магазин).*$/i, '').trim();
+                            const candTitle = cleanScrapedTitle(mlData.data.title || '');
                             if (candTitle && !isBadScrapedTitle(candTitle)) scrapedTitle = candTitle;
                             const candDesc = (mlData.data.description || '').trim();
                             if (candDesc && !isBadScrapedTitle(candDesc) && candDesc.length > 20) scrapedDesc = candDesc.slice(0, 220);
@@ -989,18 +1167,36 @@
                     }
                 } catch (e) {}
 
-                const finalTitle = prefixTextTitle || scrapedTitle || slugTitle || (article ? `Подарок из ${store.toUpperCase()} (${article})` : 'Новогодний подарок');
+                // Дополнительный фолбэк через AllOrigins Proxy, если Microlink не пробил антибот
+                if (!scrapedTitle || !scrapedImg) {
+                    const fb = await fetchFallbackMetadataViaProxy(rawInput);
+                    if (fb) {
+                        const cleaned = cleanScrapedTitle(fb.title);
+                        if (!scrapedTitle && cleaned && !isBadScrapedTitle(cleaned)) scrapedTitle = cleaned;
+                        if (!scrapedDesc && fb.desc && !isBadScrapedTitle(fb.desc) && fb.desc.length > 20) scrapedDesc = fb.desc.slice(0, 220);
+                        if (!scrapedImg && fb.img && !isBadScrapedImage(fb.img)) scrapedImg = fb.img;
+                        if (!scrapedPrice && fb.price && /^\d+/.test(fb.price)) {
+                            scrapedPrice = `~${parseInt(fb.price, 10).toLocaleString('ru-RU')} ₽`;
+                        }
+                    }
+                }
+
+                const storeReadable = STORE_META[detectedStore]?.name || detectedStore.toUpperCase();
+                const finalTitle = prefixTextTitle || scrapedTitle || slugTitle || (article ? `Подарок из «${storeReadable}» (${article})` : `Подарок из «${storeReadable}»`);
                 document.getElementById('add-title-input').value = finalTitle;
 
-                // 4. Подбираем умное тематическое описание, плашку и красивое фото по распознанному товару!
-                const profile = getSmartCategoryProfile(finalTitle, store, article);
+                if (scrapedPrice && !document.getElementById('add-price-input').value.trim()) {
+                    document.getElementById('add-price-input').value = scrapedPrice;
+                }
+
+                const profile = getSmartCategoryProfile(finalTitle, detectedStore, article);
                 document.getElementById('add-desc-input').value = scrapedDesc || profile.desc;
                 if (!document.getElementById('add-spec-input').value.trim()) {
                     document.getElementById('add-spec-input').value = profile.tag;
                 }
                 document.getElementById('add-image-input').value = scrapedImg || profile.img;
 
-                statusEl.innerHTML = '✅ <b>Готово!</b> Название, тематическое фото и описание подобраны автоматически. Проверьте цену и нажимайте «Добавить подарок»!';
+                statusEl.innerHTML = `✅ <b>Магазин «${storeReadable}» распознан!</b> Название, фото и оформление подобраны. Проверьте цену и нажмите «Добавить подарок» 💖`;
             } catch (e) {
                 statusEl.textContent = '⚠️ Ссылка обработана — проверьте поля.';
             } finally {
@@ -1009,10 +1205,15 @@
         }
 
         function getStoreStyleConfig(store) {
-            if (store === 'wb') return { storeName: 'Wildberries', badgeColor: 'bg-purple-600/90 text-white border-purple-400/40', btnColor: 'bg-purple-600 hover:bg-purple-500 shadow-purple-600/30', borderColor: 'hover:border-purple-500/60', icon: 'fa-bag-shopping', specColor: 'bg-purple-500/20 text-purple-300 border-purple-500/40' };
-            if (store === 'ozon') return { storeName: 'Ozon', badgeColor: 'bg-blue-600/90 text-white border-blue-400/40', btnColor: 'bg-blue-600 hover:bg-blue-500 shadow-blue-600/30', borderColor: 'hover:border-blue-500/60', icon: 'fa-box-open', specColor: 'bg-blue-500/20 text-blue-300 border-blue-500/40' };
-            if (store === 'dns') return { storeName: 'DNS', badgeColor: 'bg-amber-500/90 text-slate-950 border-amber-300/50', btnColor: 'bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow-amber-500/30', borderColor: 'hover:border-amber-500/60', icon: 'fa-microchip', specColor: 'bg-amber-500/20 text-amber-300 border-amber-500/40' };
-            return { storeName: 'Особое 18+ / Офлайн', badgeColor: 'bg-rose-600/95 text-white border-rose-400/60', btnColor: 'bg-slate-800/90 text-rose-300 border border-rose-500/40', borderColor: 'hover:border-rose-500/70', icon: 'fa-fire-flame-curved', specColor: 'bg-rose-600/30 text-rose-200 border-rose-500/60' };
+            if (store === 'wb') return { storeName: 'Wildberries', badgeColor: 'bg-purple-600/90 text-white border-purple-400/40', btnColor: 'bg-purple-600 hover:bg-purple-500 text-white shadow-purple-600/30', borderColor: 'hover:border-purple-500/60', icon: 'fa-solid fa-bag-shopping', specColor: 'bg-purple-500/20 text-purple-300 border-purple-500/40' };
+            if (store === 'ozon') return { storeName: 'Ozon', badgeColor: 'bg-blue-600/90 text-white border-blue-400/40', btnColor: 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-600/30', borderColor: 'hover:border-blue-500/60', icon: 'fa-solid fa-box-open', specColor: 'bg-blue-500/20 text-blue-300 border-blue-500/40' };
+            if (store === 'goldapple') return { storeName: 'Золотое Яблоко', badgeColor: 'bg-lime-400/95 text-slate-950 border-lime-200/60', btnColor: 'bg-lime-400 hover:bg-lime-300 text-slate-950 font-bold shadow-lime-400/30', borderColor: 'hover:border-lime-400/70', icon: 'fa-solid fa-apple-whole', specColor: 'bg-lime-400/20 text-lime-300 border-lime-400/40' };
+            if (store === 'ymarket') return { storeName: 'Яндекс Маркет', badgeColor: 'bg-yellow-400/95 text-slate-950 border-yellow-200/60', btnColor: 'bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold shadow-yellow-400/30', borderColor: 'hover:border-yellow-400/70', icon: 'fa-solid fa-bag-shopping', specColor: 'bg-yellow-400/20 text-yellow-200 border-yellow-400/40' };
+            if (store === 'lamoda') return { storeName: 'Lamoda', badgeColor: 'bg-fuchsia-950/90 text-fuchsia-100 border-fuchsia-400/40', btnColor: 'bg-gradient-to-r from-fuchsia-600 to-pink-600 hover:from-fuchsia-500 hover:to-pink-500 text-white shadow-fuchsia-600/30', borderColor: 'hover:border-fuchsia-400/60', icon: 'fa-solid fa-shirt', specColor: 'bg-fuchsia-500/20 text-fuchsia-200 border-fuchsia-400/40' };
+            if (store === 'letu') return { storeName: 'Лэтуаль', badgeColor: 'bg-cyan-600/90 text-white border-cyan-300/40', btnColor: 'bg-cyan-600 hover:bg-cyan-500 text-white shadow-cyan-600/30', borderColor: 'hover:border-cyan-400/60', icon: 'fa-solid fa-gem', specColor: 'bg-cyan-500/20 text-cyan-200 border-cyan-400/40' };
+            if (store === 'dns') return { storeName: 'DNS', badgeColor: 'bg-amber-500/90 text-slate-950 border-amber-300/50', btnColor: 'bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow-amber-500/30', borderColor: 'hover:border-amber-500/60', icon: 'fa-solid fa-microchip', specColor: 'bg-amber-500/20 text-amber-300 border-amber-500/40' };
+            if (store === 'steam') return { storeName: 'Steam', badgeColor: 'bg-[#1b2838]/95 text-sky-300 border-sky-400/50', btnColor: 'bg-gradient-to-r from-sky-600 to-blue-700 hover:from-sky-500 hover:to-blue-600 text-white font-bold shadow-sky-600/30', borderColor: 'hover:border-sky-400/70', icon: 'fa-brands fa-steam', specColor: 'bg-sky-500/20 text-sky-200 border-sky-400/40' };
+            return { storeName: 'Особое / Офлайн', badgeColor: 'bg-rose-600/95 text-white border-rose-400/60', btnColor: 'bg-slate-800/90 text-rose-300 border border-rose-500/40', borderColor: 'hover:border-rose-500/70', icon: 'fa-solid fa-fire-flame-curved', specColor: 'bg-rose-600/30 text-rose-200 border-rose-500/60' };
         }
 
         async function saveNewItem() {
@@ -1020,10 +1221,10 @@
             const title = document.getElementById('add-title-input').value.trim();
             const price = document.getElementById('add-price-input').value.trim() || 'Цена по ссылке';
             const article = document.getElementById('add-article-input').value.trim() || null;
-            const specTag = document.getElementById('add-spec-input').value.trim() || 'Новая хотелка ✨';
+            const specTag = document.getElementById('add-spec-input').value.trim() || 'Новая хотелка 💖';
             const url = document.getElementById('add-url-input').value.trim() || null;
             const image = document.getElementById('add-image-input').value.trim() || 'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=800&q=85';
-            const description = document.getElementById('add-desc-input').value.trim() || 'Желанный новогодний подарок из вишлиста Дусички! 🎄🎁';
+            const description = document.getElementById('add-desc-input').value.trim() || 'Желанный новогодний подарок из вишлиста Дусички! 🎄💖';
 
             if (!title) { showToast('Укажите название подарка!', 'fa-triangle-exclamation'); return; }
 
@@ -1042,7 +1243,7 @@
             saveAddedItems(added);
             closeAddModal();
             renderWishlist();
-            showToast('Новый подарок добавлен! 🎁', 'fa-plus');
+            showToast('Новый подарок добавлен! 🎁💖', 'fa-plus');
 
             try {
                 await fetch(BASE_SCRIPT_URL, {
@@ -1071,9 +1272,9 @@
 
         function createSnowflakes() {
             const container = document.getElementById('snow-container');
-            const symbols = ['❄', '❅', '❆', '•'];
+            const symbols = ['❄', '❅', '❆', '🌸', '✨'];
             let html = '';
-            for (let i = 0; i < 22; i++) {
+            for (let i = 0; i < 24; i++) {
                 const left = Math.random() * 100;
                 const duration = 8 + Math.random() * 12;
                 const delay = Math.random() * 8;
@@ -1084,7 +1285,7 @@
             container.innerHTML = html;
         }
 
-                window.addEventListener('paste', (e) => {
+        window.addEventListener('paste', (e) => {
             const addModalOpen = !document.getElementById('add-modal').classList.contains('hidden');
             const editModalOpen = !document.getElementById('edit-modal').classList.contains('hidden');
             if (!addModalOpen && !editModalOpen) return;
